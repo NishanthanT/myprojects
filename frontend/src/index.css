@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans;
+  }
+}
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full hover:bg-slate-400 dark:hover:bg-slate-600;
+}
+
+/* Glassmorphism utility card rules */
+.glass-panel {
+  @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-slate-200/50 dark:border-slate-800/50;
+}
+
+/* Print CSS configurations for thermal invoice layouts */
+@media print {
+  #root, .no-print {
+    display: none !important;
+  }
+  .print-only-receipt {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 76mm; /* standard thermal paper width */
+    margin: 0;
+    padding: 0;
+    background: white;
+    color: black;
+    font-family: monospace;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  .print-only-receipt * {
+    color: black !important;
+    background: transparent !important;
+  }
+}
+
+@media screen {
+  .print-only-receipt {
+    display: none !important;
+  }
+}
