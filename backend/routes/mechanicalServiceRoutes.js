@@ -1,0 +1,13 @@
+import express from 'express';
+import {verifyToken,isAdmin} from '../middleware/auth.js';
+import {mechanicalHandler} from '../controllers/mechanicalServiceController.js';
+const router=express.Router();
+router.use(verifyToken,isAdmin);
+router.get('/',mechanicalHandler('directory'));
+router.post('/types',mechanicalHandler('createType'));
+router.put('/types/:id',mechanicalHandler('updateType'));
+router.delete('/types/:id',mechanicalHandler('deleteType'));
+router.post('/mechanics',mechanicalHandler('createMechanic'));
+router.put('/mechanics/:id',mechanicalHandler('updateMechanic'));
+router.delete('/mechanics/:id',mechanicalHandler('deleteMechanic'));
+export default router;
